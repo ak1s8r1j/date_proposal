@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aashika's Date Proposal 💕</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('M4OUwDCK18dERaFiv');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Georgia,serif;background:linear-gradient(135deg,#ffe0ec,#ffd6e8 40%,#e8d5f5);padding:20px;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;}
+.app{width:100%;max-width:500px;margin:0 auto;}
+.screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:560px;}
+.screen.active{display:flex;}
+.card{background:rgba(255,255,255,0.93);border-radius:28px;padding:36px 28px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(200,100,150,0.18);position:relative;overflow:hidden;}
+h1{font-size:22px;color:#b5005e;margin-bottom:8px;font-weight:700;}
+p{color:#7a4060;font-size:14px;line-height:1.6;}
+.cat-img{width:150px;height:150px;object-fit:cover;border-radius:50%;margin:14px auto;display:block;border:4px solid #f9a8c9;}
+.btn-yes{background:linear-gradient(135deg,#f94f84,#c2185b);color:white;border:none;border-radius:50px;padding:13px 38px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(194,24,91,0.3);display:inline-block;margin-top:16px;}
+.btn-no{background:#eee;color:#999;border:none;border-radius:50px;padding:13px 38px;font-size:16px;cursor:pointer;position:absolute;transition:none !important;}
+.btn-ok,.btn-set{background:linear-gradient(135deg,#f94f84,#c2185b);color:white;border:none;border-radius:50px;padding:13px 44px;font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;box-shadow:0 4px 16px rgba(194,24,91,0.3);display:block;margin-left:auto;margin-right:auto;}
+label{color:#b5005e;font-size:13px;font-weight:700;display:block;margin-bottom:5px;margin-top:16px;text-align:left;}
+input[type="date"]{width:100%;padding:11px 14px;border-radius:14px;border:2px solid #f9a8c9;font-size:15px;color:#7a4060;background:#fff8fb;outline:none;}
+.time-options{display:grid;gap:7px;margin-top:8px;}
+.time-opt{background:#fff0f6;border:2px solid #f9a8c9;border-radius:14px;padding:10px 13px;cursor:pointer;font-size:13px;color:#7a4060;text-align:left;transition:all 0.15s;}
+.time-opt:hover,.time-opt.selected{background:#f94f84;color:white;border-color:#f94f84;}
+.tl{font-weight:700;display:block;}.tn{font-size:12px;opacity:0.85;}
+.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.cat-btn{background:#fff0f6;border:2px solid #f9a8c9;border-radius:14px;padding:11px 7px;cursor:pointer;font-size:12px;color:#7a4060;transition:all 0.15s;text-align:center;}
+.cat-btn:hover,.cat-btn.selected{background:#f94f84;color:white;border-color:#f94f84;}
+.sub-options{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;justify-content:center;}
+.sub-btn{background:#fff0f6;border:2px solid #f9a8c9;border-radius:50px;padding:7px 15px;cursor:pointer;font-size:13px;color:#7a4060;transition:all 0.15s;}
+.sub-btn:hover,.sub-btn.selected{background:#c2185b;color:white;border-color:#c2185b;}
+.scroll-card{max-height:78vh;overflow-y:auto;}
+.sec-title{font-size:12px;color:#b5005e;font-weight:700;margin:12px 0 3px;text-align:left;}
+.hearts{font-size:30px;margin-top:12px;animation:pulse 1.2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+#card1{min-height:420px;}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Page 1: Proposal -->
+  <div class="screen active" id="s1">
+    <div class="card" id="card1">
+      <h1>Hey Aashika 💕</h1>
+      <img class="cat-img" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="pookie cat"/>
+      <p style="font-size:18px;font-weight:700;color:#b5005e;margin:10px 0 18px;">Will you go on a date with me? 🥺</p>
+      <button class="btn-yes" onclick="goPage('s2')">Yes!! 💖</button>
+      <button class="btn-no" id="noBtn" onmouseenter="runAway()">No 🙅</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Shocked -->
+  <div class="screen" id="s2">
+    <div class="card">
+      <div style="font-size:56px;margin-bottom:8px;">😱</div>
+      <h1>Wait... you actually said yes?!</h1>
+      <p style="margin:12px 0 6px;">I was SO ready for you to say no.</p>
+      <p style="font-size:13px;color:#c2185b;">I even had a whole sad playlist ready 🎵😭</p>
+      <img src="https://media.giphy.com/media/l4pTfx2qLszoacZRS/giphy.gif" style="width:130px;border-radius:16px;margin:16px auto;display:block;" alt="happy cat"/>
+      <button class="btn-ok" onclick="goPage('s3')">OK fine, let's plan it 💃</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Date & Time -->
+  <div class="screen" id="s3">
+    <div class="card scroll-card">
+      <h1>So.. when are you free? 📅</h1>
+      <p style="margin-top:6px;">No pressure, just my entire weekend plans depend on this.</p>
+      <label>Pick a date</label>
+      <input type="date" id="dateInput"/>
+      <label>What time? 🕐</label>
+      <div class="time-options">
+        <div class="time-opt" onclick="selectTime(this,'17:00')"><span class="tl">5:00 PM</span><span class="tn">We eating with the retirees 👴🍽️</span></div>
+        <div class="time-opt" onclick="selectTime(this,'18:00')"><span class="tl">6:00 PM</span><span class="tn">This is the right answer tbh ✅</span></div>
+        <div class="time-opt" onclick="selectTime(this,'19:00')"><span class="tl">7:00 PM</span><span class="tn">You're making me hungry already 😩</span></div>
+        <div class="time-opt" onclick="selectTime(this,'20:00')"><span class="tl">8:00 PM</span><span class="tn">We eating dinner or breakfast? 🌙☀️</span></div>
+      </div>
+      <button class="btn-set" onclick="checkDate()">Set a Date 💌</button>
+    </div>
+  </div>
+
+  <!-- Page: Early date — crying cat -->
+  <div class="screen" id="s-early">
+    <div class="card">
+      <div style="font-size:52px;margin-bottom:6px;">😭</div>
+      <h1>Aww nooo!!</h1>
+      <img
+        src="https://media.giphy.com/media/ISOckXUybVfQ4/giphy.gif"
+        style="width:200px;border-radius:16px;margin:14px auto;display:block;"
+        alt="crying cat"
+      />
+      <p id="earlyMsg" style="font-size:14px;margin:10px 0 4px;"></p>
+      <button class="btn-ok" onclick="goPage('s3')">Ok ok fine 😔</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Venue -->
+  <div class="screen" id="s4">
+    <div class="card scroll-card">
+      <h1>Where are we feeling? 🗺️</h1>
+      <p style="margin-bottom:4px;">Pick a vibe and then pick the spot!</p>
+      <div class="category-grid" id="catGrid"></div>
+      <div id="subSection" style="display:none;">
+        <p class="sec-title" id="subTitle"></p>
+        <div class="sub-options" id="subGrid"></div>
+      </div>
+      <button class="btn-set" id="setBtn" onclick="submitDate()" style="opacity:0.4;pointer-events:none;margin-top:16px;">Set the date ✨</button>
+    </div>
+  </div>
+
+  <!-- Page 5: Final -->
+  <div class="screen" id="s5">
+    <div class="card">
+      <div id="finalMsg" style="font-size:20px;color:#b5005e;font-weight:700;line-height:1.6;"></div>
+      <img src="https://media.giphy.com/media/CjmvTCZf2U3p09Cn0h/giphy.gif" style="width:150px;border-radius:16px;margin:18px auto;display:block;" alt="excited cat"/>
+      <div class="hearts">💖💖💖</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const cats = {
+  "☕ Chill & Casual":    ["Coffee Shop","Tea Lounge","Bakery","Ice Cream Date","Bookstore Café"],
+  "🍽️ Foodie Mode":      ["Fine Dining","Rooftop Restaurant","Street Food Hunt","Brunch Spot","Sushi Date"],
+  "🎉 Fun & Activities":  ["Bowling","Arcade Games","Escape Room","Karaoke","Paint & Sip"],
+  "🌅 Romantic Vibes":    ["Beach Walk","Sunset Spot","Marina Walk","Picnic","Stargazing"],
+  "🎬 Entertainment":     ["Cinema","Live Music","Comedy Show","Theatre"],
+  "🌿 Outdoors":          ["Park Walk","Cycling","Botanical Garden"],
+  "🛍️ Just Hanging Out": ["Mall Date","Window Shopping","Night Market"],
+  "🚗 Spontaneous":       ["Road Trip","Mystery Date","You Decide","Surprise Me"]
+};
+const tMap = {'17:00':'5:00 PM','18:00':'6:00 PM','19:00':'7:00 PM','20:00':'8:00 PM'};
+let selTime = '', selCat = '', selSub = '', selDate = '';
+
+// ── Page switcher ─────────────────────────────────────────────────
+function goPage(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── No button runs away on hover ──────────────────────────────────
+const noBtn = document.getElementById('noBtn');
+const card1 = document.getElementById('card1');
+
+function runAway() {
+  const cw = card1.offsetWidth;
+  const ch = card1.offsetHeight;
+  const bw = noBtn.offsetWidth  || 120;
+  const bh = noBtn.offsetHeight || 46;
+  const x  = Math.floor(Math.random() * (cw - bw - 20)) + 10;
+  const y  = Math.floor(Math.random() * (ch - bh - 20)) + 10;
+  noBtn.style.left = x + 'px';
+  noBtn.style.top  = y + 'px';
+}
+
+window.addEventListener('load', () => {
+  noBtn.style.left = (card1.offsetWidth  - (noBtn.offsetWidth  || 120) - 20) + 'px';
+  noBtn.style.top  = (card1.offsetHeight - (noBtn.offsetHeight || 46)  - 20) + 'px';
+});
+
+// ── Time selection ────────────────────────────────────────────────
+function selectTime(el, val) {
+  document.querySelectorAll('.time-opt').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected');
+  selTime = val;
+}
+
+// ── Date validation ───────────────────────────────────────────────
+function checkDate() {
+  const raw = document.getElementById('dateInput').value;
+
+  if (!raw) {
+    alert('Please pick a date! 📅');
+    return;
+  }
+  if (!selTime) {
+    alert('Pick a time too! ⏰');
+    return;
+  }
+
+  const parts = raw.split('-');
+  const year  = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10);
+  const day   = parseInt(parts[2], 10);
+  const monthNames = ['','January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+  const fmt = `${day} ${monthNames[month]} ${year}`;
+
+  if (raw < '2026-07-10') {
+    document.getElementById('earlyMsg').textContent =
+      `Even I wanted to go on ${fmt}... but I don't have leave approved 😭 Can we please go on or after July 10th?`;
+    goPage('s-early');
+    return;
+  }
+
+  selDate = raw;
+  buildCats();
+  goPage('s4');
+}
+
+// ── Venue builder ─────────────────────────────────────────────────
+function buildCats() {
+  const g = document.getElementById('catGrid');
+  g.innerHTML = '';
+  Object.keys(cats).forEach(c => {
+    const b = document.createElement('div');
+    b.className   = 'cat-btn';
+    b.textContent = c;
+    b.onclick = () => {
+      document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('selected'));
+      b.classList.add('selected');
+      selCat = c; selSub = '';
+      showSubs(c);
+    };
+    g.appendChild(b);
+  });
+}
+
+function showSubs(c) {
+  document.getElementById('subTitle').textContent = c + ' — pick one:';
+  const g = document.getElementById('subGrid');
+  g.innerHTML = '';
+  document.getElementById('subSection').style.display = 'block';
+  cats[c].forEach(s => {
+    const b = document.createElement('div');
+    b.className   = 'sub-btn';
+    b.textContent = s;
+    b.onclick = () => {
+      document.querySelectorAll('.sub-btn').forEach(x => x.classList.remove('selected'));
+      b.classList.add('selected');
+      selSub = s;
+      const sb = document.getElementById('setBtn');
+      sb.style.opacity      = '1';
+      sb.style.pointerEvents = 'auto';
+    };
+    g.appendChild(b);
+  });
+}
+
+// ── Final submit ──────────────────────────────────────────────────
+function submitDate() {
+  if (!selSub) { alert('Pick a spot first! 🎯'); return; }
+
+  const td    = tMap[selTime] || selTime;
+  const parts = selDate.split('-');
+  const monthNames = ['','January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+  const dayNames   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dateObj    = new Date(+parts[0], +parts[1]-1, +parts[2]);
+  const dd = `${dayNames[dateObj.getDay()]}, ${+parts[2]} ${monthNames[+parts[1]]} ${parts[0]}`;
+
+  emailjs.send('service_etlth05', 'template_s68m8qd', {
+    to_email: 'sqitproject@gmail.com',
+    date: dd,
+    time: td,
+    venue: selSub,
+    vibe: selCat
+  }).then(() => console.log('✅ Email sent!'))
+    .catch(e => console.error('❌ EmailJS error:', JSON.stringify(e)));
+
+  document.getElementById('finalMsg').innerHTML =
+    `Glad you didn't say no 😌💕<br><br>` +
+    `Be ready by <strong>${td}</strong><br>` +
+    `I'm coming to get you...<br><br>` +
+    `<span style="font-size:14px;color:#c2185b;">📍 ${selSub} · ${selCat}</span><br>` +
+    `<span style="font-size:13px;color:#a0507a;">📅 ${dd}</span>`;
+
+  goPage('s5');
+}
+</script>
+</body>
+</html>
